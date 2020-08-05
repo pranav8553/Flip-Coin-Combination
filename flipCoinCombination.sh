@@ -2,12 +2,13 @@
 
 #Constants
 SINGLET=1
-
-#Declaration of a Dictionary
-declare -A flipCoinCombinations
+DOUBLET=2
 
 #To get all the combinations of the coins
 function coinCombinations() {
+	#Declaration of a Dictionary
+	declare -A flipCoinCombinations
+
 	numberOfCoins=$1
 	for ((i=1; i<=$numberOfFlips; i++))
 	do
@@ -46,9 +47,14 @@ function calculatePercentage() {
 	do
 		flipCoinCombinations[$i]=`awk "BEGIN {print ${flipCoinCombinations[$i]}*100 / $numberOfFlips}"`
 	done
-	echo "Percentage: ${flipCoinCombinations[@]}"
+	echo -e "Percentage: ${flipCoinCombinations[@]}\n"
+	unset flipCoinCombinations
 }
 
 #Main
 read -p "Enter the number of times you want to flip a coin: " numberOfFlips
-coinCombinations $SINGLET flipCoinCombinations
+echo "Singlet Combinations:"
+coinCombinations $SINGLET
+
+echo "Doublet Combinations:"
+coinCombinations $DOUBLET
