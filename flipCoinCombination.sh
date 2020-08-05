@@ -48,8 +48,17 @@ function calculatePercentage() {
 	do
 		flipCoinCombinations[$i]=`awk "BEGIN {print ${flipCoinCombinations[$i]}*100 / $numberOfFlips}"`
 	done
-	echo -e "Percentage: ${flipCoinCombinations[@]}\n"
+	echo "Percentage: ${flipCoinCombinations[@]}"
+	echo -e "Winning combination: $(winningCombination)\n"
 	unset flipCoinCombinations
+}
+
+#To get the winning combination
+function winningCombination() {
+	for i in ${!flipCoinCombinations[@]}
+	do
+		echo $i ${flipCoinCombinations[$i]}
+	done | sort -k2 -rn | head -1
 }
 
 #Main
