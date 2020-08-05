@@ -3,6 +3,7 @@
 #Constants
 SINGLET=1
 DOUBLET=2
+TRIPLET=3
 
 #To get all the combinations of the coins
 function coinCombinations() {
@@ -58,3 +59,7 @@ coinCombinations $SINGLET
 
 echo "Doublet Combinations:"
 coinCombinations $DOUBLET
+
+echo "Triplet Combinations:"
+coinCombinations $TRIPLET
+
